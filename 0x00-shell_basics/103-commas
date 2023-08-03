@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -1v --indicator-style=slash --group-directories-first --almost-all | awk 'BEGIN { printf ".,"; printf "..," } { printf $0"," } END { printf "\n" }'
+ls -lmvp
