@@ -3,7 +3,8 @@
 
 ## Author's Details.
 Name: *Anaclate Umundi*
-Name: *Felister Njoki*
+
+Name: *Felister Ngugi*
 
 Email: *ndedaanaco@gmail.com*
 Email: *njokingugi9462@gmail.com*
