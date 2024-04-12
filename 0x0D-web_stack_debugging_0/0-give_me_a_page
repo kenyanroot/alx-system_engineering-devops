@@ -1,10 +1,3 @@
 #!/usr/bin/env bash
 # Debugging apache
-#!/usr/bin/env bash
-
-# Install Apache and start the service
-apt-get update
-apt-get install -y apache2
-echo "Hello Holberton" > /var/www/html/index.html
-systemctl start apache2
-systemctl status apache2
+sudo ervice apache2 start
