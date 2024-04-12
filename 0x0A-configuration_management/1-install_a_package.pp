@@ -1,5 +1,5 @@
-# installing a package using puppet
-package { 'puppet-lint':
-  ensure   => '2.1.1',
-  provider => 'gem',
+# Install Flask version 2.1.0 using Puppet
+package { 'Flask':
+  ensure   => '2.1.0',
+  provider => 'pip',
 }
