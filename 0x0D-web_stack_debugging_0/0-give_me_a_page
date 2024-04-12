@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 # Debugging apache
 # This was hard
+
 service apache2 start
