@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
-#This script installs nginx
-# Install nginx
+# Installs Nginx
 
-sudo apt-get update
-sudo apt-get -y install nginx
-sudo ufw allow 'Nginx HTTP'
-# Configure nginx to listen on port 80 and serve "Hello World!" at the root
-sudo bash -c 'echo "Hello World!" > /var/www/html/index.html'
-
-# Restart nginx
-sudo service nginx restart
+apt-get update
+apt-get install -y nginx
+echo "Holberton School" > /var/www/html/index.html
+service nginx start
