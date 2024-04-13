@@ -1,16 +1,20 @@
 #!/usr/bin/env bash
-# Installs nginx web server
+# Installs nginx web server and configures redirection
 
 apt-get update
 apt-get install -y nginx
-echo "Holberton School" > /etc/nginx/html/index.html
+mkdir -p /var/www/html
+echo "Holberton School" > /var/www/html/index.html
 echo "server {
     listen 80;
     listen [::]:80 default_server;
-    root   /etc/nginx/html;
-    index  index.html;
+    server_name _;
+    root /var/www/html;
+    index index.html;
     location /redirect_me {
         return 301 https://twitter.com/Emmanue17280546;
     }
 }" > /etc/nginx/sites-available/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx restart
+nginx -t
