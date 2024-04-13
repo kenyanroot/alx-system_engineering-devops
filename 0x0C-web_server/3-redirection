@@ -1,20 +1,31 @@
 #!/usr/bin/env bash
-# Installs nginx web server and configures redirection
+# Configure nginx in a new Ubuntu machine with a permanent redirect
 
-apt-get update
-apt-get install -y nginx
-mkdir -p /var/www/html
-echo "Holberton School" > /var/www/html/index.html
-echo "server {
-    listen 80;
-    listen [::]:80 default_server;
-    server_name _;
-    root /var/www/html;
-    index index.html;
-    location /redirect_me {
-        return 301 https://twitter.com/Emmanue17280546;
-    }
-}" > /etc/nginx/sites-available/default
-ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-service nginx restart
-nginx -t
+sudo apt-get update
+sudo apt-get install nginx -y
+echo "Hello World!" | sudo tee /usr/share/nginx/html/index.html
+
+new_config=\
+"server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+               root /var/www/html;
+        index index.html index.htm index.nginx-debian.html;
+        server_name _;
+        location / {
+                try_files \$uri \$uri/ =404;
+        }
+        
+        if (\$request_filename ~ redirect_me){
+            rewrite ^ https://www.youtube.com/@tpauldike permanent;
+        }
+}
+"
+
+echo "$new_config" > /etc/nginx/sites-available/default
+if [ "$(pgrep nginx)" -le 0 ];
+then
+    service nginx start
+else
+    service nginx restart
+fi;
